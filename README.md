@@ -1,4 +1,4 @@
-# EA2 – Ideación, diseño y documentación de la necesidad
+﻿# EA2 – Ideación, diseño y documentación de la necesidad
 
 **Proyecto Integrador III – Analítica de Datos**  
 **Estudiante:** Pablo Emilio Gómez Gómez  
@@ -39,8 +39,6 @@ EA2_HeartFailure_Pablo_Gomez/
 ├── METADATA_DATASET.md
 ├── README.md
 ├── requirements.txt
-├── documento/
-│   └── PABLO_GOMEZ_EA2_IDEACION_DISENO_NECESIDAD.docx
 ├── notebooks/
 │   └── PABLO_GOMEZ_EA2_RECONOCIMIENTO_DATASET.ipynb
 └── resultados/
@@ -112,4 +110,11 @@ El repositorio incluye el workflow `.github/workflows/validacion_ae2.yml`, que e
 La automatización instala las dependencias en un entorno limpio de GitHub, ejecuta el notebook completo, verifica que las celdas no presenten errores, comprueba la estructura original de 299 registros y 13 columnas y valida la generación de `resultados/resumen_dataframe.txt`.
 
 Esta verificación complementa la ejecución local y permite comprobar públicamente la reproducibilidad técnica de AE2.
+
+
+## Documento académico entregado en Canvas
+
+El documento académico correspondiente a AE2 se entrega directamente como archivo adjunto en Canvas, de forma separada al repositorio técnico.
+
+El repositorio conserva las evidencias reproducibles del componente de datos: notebook ejecutado, resumen automático `.txt`, dependencias, metadata, documentación técnica e integración continua mediante GitHub Actions.
 
