@@ -1,0 +1,4 @@
+datasets
+pandas
+jupyter
+ipykernel
