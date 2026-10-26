@@ -1,0 +1,25 @@
+EA2 - RESUMEN AUTOMÁTICO DEL DATAFRAME
+=======================================================
+Dataset: mstz/heart_failure
+Configuración: death
+Split: train
+Muestra utilizada: no; se utiliza el split completo.
+Fecha de consulta: 25 de octubre de 2026
+Filas: 299
+Columnas: 13
+
+COLUMNAS, TIPOS Y VALORES NULOS
+-------------------------------------------------------
+age | tipo: int64 | nulos: 0
+has_anaemia | tipo: bool | nulos: 0
+creatinine_phosphokinase_concentration_in_blood | tipo: float64 | nulos: 0
+has_diabetes | tipo: bool | nulos: 0
+heart_ejection_fraction | tipo: float64 | nulos: 0
+has_high_blood_pressure | tipo: bool | nulos: 0
+platelets_concentration_in_blood | tipo: float64 | nulos: 0
+serum_creatinine_concentration_in_blood | tipo: float64 | nulos: 0
+serum_sodium_concentration_in_blood | tipo: float64 | nulos: 0
+is_male | tipo: bool | nulos: 0
+is_smoker | tipo: bool | nulos: 0
+days_in_study | tipo: int64 | nulos: 0
+is_dead | tipo: int64 | nulos: 0
