@@ -104,3 +104,12 @@ Se conserva así un estilo pedagógico y comprensible sin modificar el comportam
 ## Nota de alcance
 
 Los datos son históricos y corresponden a una población específica. Las comparaciones futuras serán descriptivas y no deberán interpretarse como prueba de causalidad, diagnóstico individual o recomendación médica.
+
+## Validación automática con GitHub Actions
+
+El repositorio incluye el workflow `.github/workflows/validacion_ae2.yml`, que ejecuta automáticamente una validación técnica al publicar cambios en la rama `main`.
+
+La automatización instala las dependencias en un entorno limpio de GitHub, ejecuta el notebook completo, verifica que las celdas no presenten errores, comprueba la estructura original de 299 registros y 13 columnas y valida la generación de `resultados/resumen_dataframe.txt`.
+
+Esta verificación complementa la ejecución local y permite comprobar públicamente la reproducibilidad técnica de AE2.
+

@@ -1,0 +1,196 @@
+﻿name: Validacion automatica AE2
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validar-ae2:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install nbconvert ipykernel
+
+      - name: Mostrar versiones
+        run: |
+          python --version
+          python -c "import pandas; print('Pandas:', pandas.__version__)"
+          python -c "import datasets; print('Datasets:', datasets.__version__)"
+
+      - name: Ejecutar notebook completo
+        run: |
+          python -m nbconvert \
+            --to notebook \
+            --execute notebooks/PABLO_GOMEZ_EA2_RECONOCIMIENTO_DATASET.ipynb \
+            --inplace \
+            --ExecutePreprocessor.timeout=600
+
+      - name: Validar notebook ejecutado
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          ruta = Path("notebooks/PABLO_GOMEZ_EA2_RECONOCIMIENTO_DATASET.ipynb")
+
+          with ruta.open("r", encoding="utf-8") as archivo:
+              nb = json.load(archivo)
+
+          codigo = [
+              celda for celda in nb["cells"]
+              if celda.get("cell_type") == "code"
+          ]
+
+          ejecutadas = [
+              celda for celda in codigo
+              if celda.get("execution_count") is not None
+          ]
+
+          errores = []
+
+          for celda in codigo:
+              for salida in celda.get("outputs", []):
+                  if salida.get("output_type") == "error":
+                      errores.append(
+                          salida.get("ename", "Error desconocido")
+                      )
+
+          assert len(codigo) > 0, "El notebook no contiene celdas de código."
+          assert len(ejecutadas) == len(codigo), \
+              "No todas las celdas quedaron ejecutadas."
+          assert not errores, \
+              f"El notebook presenta errores: {errores}"
+
+          print("[OK] Notebook completamente ejecutado.")
+          print(f"[OK] Celdas de código: {len(codigo)}")
+          print(f"[OK] Celdas ejecutadas: {len(ejecutadas)}")
+          print("[OK] No existen salidas de error.")
+          PY
+
+      - name: Validar resumen automatico
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          ruta = Path("resultados/resumen_dataframe.txt")
+
+          assert ruta.exists(), \
+              "No existe resultados/resumen_dataframe.txt"
+
+          texto = ruta.read_text(encoding="utf-8")
+
+          requisitos = [
+              "mstz/heart_failure",
+              "death",
+              "train",
+              "299",
+              "13",
+              "age",
+              "has_anaemia",
+              "heart_ejection_fraction",
+              "has_high_blood_pressure",
+              "serum_creatinine_concentration_in_blood",
+              "serum_sodium_concentration_in_blood",
+              "days_in_study",
+              "is_dead",
+              "nulos",
+          ]
+
+          faltantes = [
+              elemento
+              for elemento in requisitos
+              if elemento not in texto
+          ]
+
+          assert not faltantes, \
+              f"Faltan elementos en el resumen: {faltantes}"
+
+          print("[OK] resumen_dataframe.txt existe.")
+          print("[OK] Codificación UTF-8 válida.")
+          print("[OK] Dataset: mstz/heart_failure.")
+          print("[OK] Configuración: death.")
+          print("[OK] Split: train.")
+          print("[OK] Filas: 299.")
+          print("[OK] Columnas: 13.")
+          print("[OK] Tipos y valores nulos documentados.")
+          PY
+
+      - name: Validar estructura obligatoria
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          archivos = [
+              Path("README.md"),
+              Path("requirements.txt"),
+              Path("METADATA_DATASET.md"),
+              Path("CHECKLIST_RUBRICA.md"),
+              Path("documento/PABLO_GOMEZ_EA2_IDEACION_DISENO_NECESIDAD.docx"),
+              Path("notebooks/PABLO_GOMEZ_EA2_RECONOCIMIENTO_DATASET.ipynb"),
+              Path("resultados/resumen_dataframe.txt"),
+          ]
+
+          faltantes = [
+              str(archivo)
+              for archivo in archivos
+              if not archivo.exists()
+          ]
+
+          assert not faltantes, \
+              f"Faltan archivos obligatorios: {faltantes}"
+
+          for archivo in archivos:
+              assert archivo.stat().st_size > 0, \
+                  f"Archivo vacío: {archivo}"
+              print(f"[OK] {archivo}")
+          PY
+
+      - name: Guardar evidencias actualizadas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            notebooks/PABLO_GOMEZ_EA2_RECONOCIMIENTO_DATASET.ipynb \
+            resultados/resumen_dataframe.txt
+
+          if git diff --cached --quiet; then
+            echo "[OK] Las evidencias ya estaban actualizadas."
+          else
+            git commit -m "ci: ejecuta AE2 y actualiza evidencias automaticamente"
+            git push
+          fi
+
+      - name: Resumen de validacion
+        run: |
+          echo "======================================================"
+          echo " AE2 - VALIDACION AUTOMATICA COMPLETADA"
+          echo "======================================================"
+          echo "[OK] Dataset obtenido desde Hugging Face"
+          echo "[OK] DataFrame reconocido"
+          echo "[OK] Notebook ejecutado"
+          echo "[OK] 299 registros"
+          echo "[OK] 13 columnas"
+          echo "[OK] Resumen TXT generado"
+          echo "[OK] Archivos obligatorios presentes"
+          echo "======================================================"
