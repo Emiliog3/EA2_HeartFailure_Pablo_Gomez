@@ -145,7 +145,6 @@ jobs:
               Path("requirements.txt"),
               Path("METADATA_DATASET.md"),
               Path("CHECKLIST_RUBRICA.md"),
-              Path("documento/PABLO_GOMEZ_EA2_IDEACION_DISENO_NECESIDAD.docx"),
               Path("notebooks/PABLO_GOMEZ_EA2_RECONOCIMIENTO_DATASET.ipynb"),
               Path("resultados/resumen_dataframe.txt"),
           ]
@@ -194,3 +193,4 @@ jobs:
           echo "[OK] Resumen TXT generado"
           echo "[OK] Archivos obligatorios presentes"
           echo "======================================================"
+
