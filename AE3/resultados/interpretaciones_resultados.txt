@@ -1,0 +1,25 @@
+INTERPRETACIONES DESCRIPTIVAS PARA AE3
+====================================================================
+- No registró muerte: 203 registros (67.89 %).
+- Registró muerte: 96 registros (32.11 %).
+
+Las diferencias siguientes corresponden exclusivamente a los 299 registros del conjunto y no demuestran causalidad ni riesgo poblacional.
+- Mediana de age: No registró muerte=60.0; Registró muerte=65.0.
+- Mediana de heart_ejection_fraction: No registró muerte=38.0; Registró muerte=30.0.
+- Mediana de serum_creatinine_concentration_in_blood: No registró muerte=1.0; Registró muerte=1.3.
+- Mediana de serum_sodium_concentration_in_blood: No registró muerte=137.0; Registró muerte=135.5.
+- Mediana de days_in_study: No registró muerte=172.0; Registró muerte=44.5.
+
+Grupos de edad (proporción con muerte registrada dentro de cada grupo):
+- <50: 11/47 (23.40 %).
+- 50-59: 20/82 (24.39 %).
+- 60-69: 27/93 (29.03 %).
+- 70-79: 20/52 (38.46 %).
+- 80+: 18/25 (72.00 %).
+
+Número de condiciones registradas (anemia, diabetes y presión arterial alta):
+- 0 condiciones: 19/67 (28.36 %).
+- 1 condición: 35/122 (28.69 %).
+- 2 o 3 condiciones: 42/110 (38.18 %).
+
+Limitaciones: población específica, datos históricos, variables limitadas, seguimiento de duración desigual y ausencia de base para inferencia causal o diagnóstico individual.

@@ -1,0 +1,14 @@
+variable,tipo_antes,tipo_despues_transformacion
+age,int64,int64
+has_anaemia,bool,int8
+creatinine_phosphokinase_concentration_in_blood,float64,float64
+has_diabetes,bool,int8
+heart_ejection_fraction,float64,float64
+has_high_blood_pressure,bool,int8
+platelets_concentration_in_blood,float64,float64
+serum_creatinine_concentration_in_blood,float64,float64
+serum_sodium_concentration_in_blood,float64,float64
+is_male,bool,int8
+is_smoker,bool,int8
+days_in_study,int64,int64
+is_dead,int64,Int8

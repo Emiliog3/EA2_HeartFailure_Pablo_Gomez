@@ -118,3 +118,132 @@ El documento académico correspondiente a AE2 se entrega directamente como archi
 
 El repositorio conserva las evidencias reproducibles del componente de datos: notebook ejecutado, resumen automático `.txt`, dependencias, metadata, documentación técnica e integración continua mediante GitHub Actions.
 
+
+<!-- INICIO_AE3_2026 -->
+
+---
+
+## Actividad 3 - Transformación y enriquecimiento de datos
+
+### Continuidad del proyecto
+
+Esta entrega continúa el estudio descriptivo de insuficiencia
+cardíaca desarrollado en EA1 y EA2. Se conserva la misma
+fuente de información y se amplía el tratamiento de los datos
+para responder las preguntas planteadas en la segunda etapa.
+
+**Fuente:** Hugging Face, `mstz/heart_failure`.
+
+**Configuración:** `death`.
+
+**Partición:** `train`.
+
+**Registros originales:** 299.
+
+**Columnas originales:** 13.
+
+**Columnas después del procesamiento:** 19.
+
+El análisis conserva los 299 registros y realiza verificaciones
+para detectar valores faltantes, inconsistencias y problemas
+de calidad antes de producir las tablas de resultados.
+
+### Organización de la Actividad 3
+
+La carpeta `AE3` contiene los siguientes directorios:
+
+- `datos`: conjunto original y datos preparados.
+- `src`: funciones de transformación y análisis.
+- `notebooks`: desarrollo ejecutable en Jupyter.
+- `resultados`: tablas, controles y archivos TXT.
+- `documento`: informe académico de la tercera entrega.
+
+El notebook principal es:
+
+`AE3/notebooks/PABLO_GOMEZ_AE3_TRANSFORMACION_ENRIQUECIMIENTO.ipynb`
+
+### Transformación y enriquecimiento
+
+El procesamiento incluye la revisión de los tipos de datos,
+la identificación de inconsistencias, la aplicación de reglas
+de calidad y la construcción de variables descriptivas.
+
+Las variables incorporadas permiten organizar las
+observaciones por estado de seguimiento, grupos de edad
+y condiciones registradas, entre otros criterios presentes
+en el análisis.
+
+Se mantiene la distinción entre información original,
+variables derivadas y resultados descriptivos.
+
+### Resultados
+
+Los resultados se exportan a `AE3/resultados/`.
+
+Entre las evidencias se encuentran:
+
+- Comparación de datos antes y después.
+- Diccionario de datos actualizado.
+- Controles de calidad.
+- Tablas descriptivas por estado de seguimiento.
+- Análisis de variables cuantitativas.
+- Análisis de condiciones registradas.
+- Distribución por grupos de edad.
+- Interpretaciones de los resultados.
+- Resumen automático del DataFrame final.
+
+Las tablas se generan a partir de los datos procesados
+y deben coincidir con los resultados del notebook.
+
+### Reproducción del proyecto
+
+El entorno de GitHub Actions utiliza Python 3.12.
+
+Para preparar las dependencias:
+
+```bash
+python -m pip install -r AE3/requirements-ci.txt
+```
+
+Para ejecutar el notebook:
+
+```bash
+python -m nbconvert --to notebook --execute AE3/notebooks/PABLO_GOMEZ_AE3_TRANSFORMACION_ENRIQUECIMIENTO.ipynb --inplace --ExecutePreprocessor.kernel_name=python3 --ExecutePreprocessor.timeout=600
+```
+
+Para ejecutar el validador:
+
+```bash
+python validar_entrega_ae3.py
+```
+
+El flujo automatizado se encuentra en:
+
+`.github/workflows/validacion_ae3.yml`
+
+La publicación de una nueva versión permite que GitHub Actions
+ejecute el notebook y compruebe los resultados de forma
+independiente del computador utilizado para desarrollarlo.
+
+### Alcance y limitaciones
+
+Los resultados tienen carácter descriptivo y exploratorio.
+Las asociaciones observadas no permiten establecer relaciones
+causales ni sustituir la valoración clínica individual.
+
+El enriquecimiento de datos busca mejorar la organización,
+interpretación y presentación de la información disponible,
+sin incorporar observaciones clínicas que no existan en
+la fuente original.
+
+### Proyección hacia la Actividad 4
+
+Esta tercera etapa proporciona datos preparados,
+tablas verificables y métricas descriptivas que servirán
+de base para desarrollar una aplicación Streamlit.
+
+La aplicación deberá utilizar las mismas definiciones
+y reglas de cálculo para mantener coherencia entre
+notebook, visualizaciones e informe final.
+
+<!-- FIN_AE3_2026 -->

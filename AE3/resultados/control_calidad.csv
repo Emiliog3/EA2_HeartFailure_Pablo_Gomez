@@ -1,0 +1,13 @@
+control,resultado,afectados,decision
+Valores nulos antes,0,0,No imputar si el resultado es 0.
+Filas duplicadas exactas antes,0,0,No eliminar si el resultado es 0.
+Valores fuera de 0/1 en indicadores binarios,0,0,No se modifica ningún registro si el resultado es 0.
+Rango estructural: edad_no_positiva,0,0,Revisar únicamente si el resultado es mayor que 0.
+Rango estructural: fraccion_eyeccion_fuera_0_100,0,0,Revisar únicamente si el resultado es mayor que 0.
+Rango estructural: plaquetas_negativas,0,0,Revisar únicamente si el resultado es mayor que 0.
+Rango estructural: creatinina_serica_negativa,0,0,Revisar únicamente si el resultado es mayor que 0.
+Rango estructural: sodio_serico_negativo,0,0,Revisar únicamente si el resultado es mayor que 0.
+Rango estructural: cpk_negativa,0,0,Revisar únicamente si el resultado es mayor que 0.
+Rango estructural: seguimiento_negativo,0,0,Revisar únicamente si el resultado es mayor que 0.
+Valores nulos después de conversión,0,0,La conversión no debe crear faltantes.
+Filas eliminadas,0,0,AE3 conserva los 299 registros.

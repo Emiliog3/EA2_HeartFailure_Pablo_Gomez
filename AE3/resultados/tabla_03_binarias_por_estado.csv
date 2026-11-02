@@ -1,0 +1,11 @@
+variable,indicador,estado_seguimiento,n_grupo,registros_con_indicador_1,porcentaje_en_grupo
+has_anaemia,Anemia registrada,No registró muerte,203,83,40.89
+has_anaemia,Anemia registrada,Registró muerte,96,46,47.92
+has_diabetes,Diabetes registrada,No registró muerte,203,85,41.87
+has_diabetes,Diabetes registrada,Registró muerte,96,40,41.67
+has_high_blood_pressure,Presión arterial alta registrada,No registró muerte,203,66,32.51
+has_high_blood_pressure,Presión arterial alta registrada,Registró muerte,96,39,40.62
+is_male,Sexo masculino registrado,No registró muerte,203,132,65.02
+is_male,Sexo masculino registrado,Registró muerte,96,62,64.58
+is_smoker,Tabaquismo registrado,No registró muerte,203,66,32.51
+is_smoker,Tabaquismo registrado,Registró muerte,96,30,31.25

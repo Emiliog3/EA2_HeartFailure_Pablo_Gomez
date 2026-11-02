@@ -1,0 +1,20 @@
+variable,significado,tipo_pandas,unidad_o_codificacion
+age,Edad registrada,int64,años
+has_anaemia,Indicador de anemia registrada,int8,0/1
+creatinine_phosphokinase_concentration_in_blood,Concentración de creatina fosfoquinasa en sangre,float64,mcg/L según documentación fuente
+has_diabetes,Indicador de diabetes registrada,int8,0/1
+heart_ejection_fraction,Fracción de eyección cardíaca,float64,%
+has_high_blood_pressure,Indicador de presión arterial alta registrada,int8,0/1
+platelets_concentration_in_blood,Concentración de plaquetas en sangre,float64,kiloplaquetas/mL según documentación fuente
+serum_creatinine_concentration_in_blood,Creatinina sérica,float64,mg/dL
+serum_sodium_concentration_in_blood,Sodio sérico,float64,mEq/L
+is_male,Sexo masculino codificado en la fuente,int8,0/1
+is_smoker,Indicador de tabaquismo registrado,int8,0/1
+days_in_study,Tiempo de seguimiento,int64,días
+is_dead,Muerte registrada durante el seguimiento,Int8,0/1
+estado_seguimiento,Etiqueta legible derivada de is_dead,category,categoría
+grupo_edad,Grupo descriptivo de edad; no es umbral clínico,category,categoría
+condiciones_registradas,"Suma de anemia, diabetes y presión arterial alta registradas",int8,conteo 0-3
+nivel_condiciones_registradas,Agrupación descriptiva del conteo de condiciones,category,categoría
+sexo_registrado,Etiqueta legible derivada de is_male,category,categoría
+tabaquismo_registrado,Etiqueta legible derivada de is_smoker,category,categoría

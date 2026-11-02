@@ -1,0 +1,7 @@
+variable,regla,significado,utilidad,afectados
+estado_seguimiento,is_dead: 1=Registró muerte; 0=No registró muerte,Etiqueta legible del desenlace registrado durante el seguimiento.,"Facilita tablas, filtros y futura visualización en Streamlit.",299
+grupo_edad,<50; 50-59; 60-69; 70-79; 80+ años,Agrupación descriptiva de edad.,Permite comparar la distribución del evento por grupos de edad sin interpretar los cortes como umbrales clínicos.,299
+condiciones_registradas,anemia + diabetes + presión arterial alta (cada indicador 0/1),Número de las tres condiciones binarias registradas en cada fila.,Resume simultáneamente las condiciones disponibles sin crear un índice clínico.,299
+nivel_condiciones_registradas,0; 1; 2 o 3 condiciones registradas,Categoría descriptiva derivada del conteo anterior.,Facilita la comparación de proporciones en tablas y en AE4.,299
+sexo_registrado,is_male: 1=Masculino; 0=Femenino,Etiqueta legible del sexo codificado en la fuente.,Evita mostrar códigos 0/1 en resultados y filtros.,299
+tabaquismo_registrado,is_smoker: 1=Sí; 0=No,Etiqueta legible del indicador de tabaquismo registrado.,Facilita lectura de tablas y futura visualización.,299

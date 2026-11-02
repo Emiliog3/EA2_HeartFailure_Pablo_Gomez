@@ -1,0 +1,81 @@
+AE3 - RESUMEN AUTOMÁTICO DEL DATAFRAME TRANSFORMADO Y ENRIQUECIDO
+============================================================================
+Dataset: mstz/heart_failure
+Configuración: death
+Split: train
+Fuente utilizada en esta ejecución: Hugging Face
+Filas: 299
+Columnas: 19
+Valores nulos totales: 0
+
+COLUMNAS, TIPOS Y NULOS
+----------------------------------------------------------------------------
+age | tipo: int64 | nulos: 0
+has_anaemia | tipo: int8 | nulos: 0
+creatinine_phosphokinase_concentration_in_blood | tipo: float64 | nulos: 0
+has_diabetes | tipo: int8 | nulos: 0
+heart_ejection_fraction | tipo: float64 | nulos: 0
+has_high_blood_pressure | tipo: int8 | nulos: 0
+platelets_concentration_in_blood | tipo: float64 | nulos: 0
+serum_creatinine_concentration_in_blood | tipo: float64 | nulos: 0
+serum_sodium_concentration_in_blood | tipo: float64 | nulos: 0
+is_male | tipo: int8 | nulos: 0
+is_smoker | tipo: int8 | nulos: 0
+days_in_study | tipo: int64 | nulos: 0
+is_dead | tipo: Int8 | nulos: 0
+estado_seguimiento | tipo: category | nulos: 0
+grupo_edad | tipo: category | nulos: 0
+condiciones_registradas | tipo: int8 | nulos: 0
+nivel_condiciones_registradas | tipo: category | nulos: 0
+sexo_registrado | tipo: category | nulos: 0
+tabaquismo_registrado | tipo: category | nulos: 0
+
+ESTADÍSTICAS DESCRIPTIVAS NUMÉRICAS
+----------------------------------------------------------------------------
+                                                 count           mean           std      min       25%       50%       75%       max
+age                                              299.0      60.829431     11.894997     40.0      51.0      60.0      70.0      95.0
+has_anaemia                                      299.0       0.431438      0.496107      0.0       0.0       0.0       1.0       1.0
+creatinine_phosphokinase_concentration_in_blood  299.0     581.839465    970.287881     23.0     116.5     250.0     582.0    7861.0
+has_diabetes                                     299.0        0.41806      0.494067      0.0       0.0       0.0       1.0       1.0
+heart_ejection_fraction                          299.0      38.083612     11.834841     14.0      30.0      38.0      45.0      80.0
+has_high_blood_pressure                          299.0       0.351171      0.478136      0.0       0.0       0.0       1.0       1.0
+platelets_concentration_in_blood                 299.0  263358.029264  97804.236869  25100.0  212500.0  262000.0  303500.0  850000.0
+serum_creatinine_concentration_in_blood          299.0        1.39388       1.03451      0.5       0.9       1.1       1.4       9.4
+serum_sodium_concentration_in_blood              299.0     136.625418      4.412477    113.0     134.0     137.0     140.0     148.0
+is_male                                          299.0       0.648829      0.478136      0.0       0.0       1.0       1.0       1.0
+is_smoker                                        299.0        0.32107       0.46767      0.0       0.0       0.0       1.0       1.0
+days_in_study                                    299.0      130.26087     77.614208      4.0      73.0     115.0     203.0     285.0
+is_dead                                          299.0        0.32107       0.46767      0.0       0.0       0.0       1.0       1.0
+condiciones_registradas                          299.0       1.200669      0.851292      0.0       1.0       1.0       2.0       3.0
+
+FRECUENCIAS DE VARIABLES DERIVADAS
+----------------------------------------------------------------------------
+
+estado_seguimiento:
+estado_seguimiento
+No registró muerte    203
+Registró muerte        96
+
+grupo_edad:
+grupo_edad
+60-69    93
+50-59    82
+70-79    52
+<50      47
+80+      25
+
+nivel_condiciones_registradas:
+nivel_condiciones_registradas
+1 condición          122
+2 o 3 condiciones    110
+0 condiciones         67
+
+sexo_registrado:
+sexo_registrado
+Masculino    194
+Femenino     105
+
+tabaquismo_registrado:
+tabaquismo_registrado
+No    203
+Sí     96

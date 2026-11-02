@@ -7,3 +7,6 @@ Thumbs.db
 .env
 desktop.ini
 *.docx
+
+# Documento academico oficial de AE3
+!AE3/documento/PABLO_GOMEZ_AE3_TRANSFORMACION_ENRIQUECIMIENTO.docx

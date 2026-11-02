@@ -1,0 +1,6 @@
+pregunta,variables,resultado_esperado
+P1. Distribución del desenlace registrado,is_dead / estado_seguimiento,Conteos y porcentajes de ambos grupos
+P2. Diferencias en variables cuantitativas,"age, CPK, fracción de eyección, plaquetas, creatinina, sodio y days_in_study","n, media, mediana, desviación, CV, cuartiles y rango observado por grupo"
+P3. Diferencias en indicadores binarios,"anemia, diabetes, presión arterial alta, sexo y tabaquismo",Conteos y porcentajes dentro de cada grupo
+P4. Grupos descriptivos de edad,"age, grupo_edad, is_dead",Total y porcentaje con muerte registrada por grupo de edad
+P5. Número de condiciones registradas,"anemia, diabetes, presión arterial alta, condiciones_registradas, is_dead",Total y porcentaje con muerte registrada por nivel de condiciones
