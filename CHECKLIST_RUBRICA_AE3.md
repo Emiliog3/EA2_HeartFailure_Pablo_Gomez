@@ -40,7 +40,7 @@
 - [ ] Confirmar el resultado de GitHub Actions correspondiente al último commit documental, después de publicarlo.
 
 ## Documento académico
-`AE3/documento/PABLO_GOMEZ_AE3_TRANSFORMACION_ENRIQUECIMIENTO.docx`
+`AE3/documento/S30_AE3_Transformacion_Enriquecimiento_PG.docx`
 
 En Canvas puede adjuntarse una copia con el nombre `S30_AE3_Transformacion_Enriquecimiento_Pablo_Gomez.docx`.
 

@@ -59,7 +59,7 @@ jobs:
               "AE3/resultados/comparacion_antes_despues.csv",
               "AE3/resultados/diccionario_datos_ae3.csv",
               "AE3/resultados/resumen_dataframe_final.txt",
-              "AE3/documento/PABLO_GOMEZ_AE3_TRANSFORMACION_ENRIQUECIMIENTO.docx",
+              "AE3/documento/S30_AE3_Transformacion_Enriquecimiento_PG.docx",
           ]
           for nombre in obligatorios:
               p = Path(nombre)

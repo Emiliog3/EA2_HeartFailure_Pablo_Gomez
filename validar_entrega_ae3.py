@@ -32,7 +32,7 @@ obligatorios = [
     "requirements.txt",
     "CHECKLIST_RUBRICA_AE3.md",
     ".github/workflows/validacion_ae3.yml",
-    "AE3/documento/PABLO_GOMEZ_AE3_TRANSFORMACION_ENRIQUECIMIENTO.docx",
+    "AE3/documento/S30_AE3_Transformacion_Enriquecimiento_PG.docx",
     "AE3/resultados/resumen_dataframe_final.txt",
     "AE3/resultados/control_calidad.csv",
     "AE3/resultados/comparacion_antes_despues.csv",
