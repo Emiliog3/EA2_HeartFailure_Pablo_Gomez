@@ -1,0 +1,88 @@
+name: Validacion automatica AE3
+
+on:
+  push:
+    branches: [main, ae3-desarrollo]
+  workflow_dispatch:
+
+jobs:
+  validar-ae3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: AE3/requirements-ci.txt
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r AE3/requirements-ci.txt
+
+      - name: Ejecutar notebook completo
+        run: |
+          python -m nbconvert --to notebook --execute \
+            AE3/notebooks/PABLO_GOMEZ_AE3_TRANSFORMACION_ENRIQUECIMIENTO.ipynb \
+            --inplace --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.kernel_name=python3
+
+      - name: Validar evidencias
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          import json
+
+          nb_path = Path("AE3/notebooks/PABLO_GOMEZ_AE3_TRANSFORMACION_ENRIQUECIMIENTO.ipynb")
+          nb = json.loads(nb_path.read_text(encoding="utf-8"))
+          code = [c for c in nb["cells"] if c.get("cell_type") == "code"]
+          assert code and all(c.get("execution_count") is not None for c in code)
+          errors = [o for c in code for o in c.get("outputs", []) if o.get("output_type") == "error"]
+          assert not errors, errors
+
+          df = pd.read_csv("AE3/datos/heart_failure_preparado.csv")
+          assert df.shape[0] == 299
+          assert df.shape[1] >= 19
+          assert int(df.isna().sum().sum()) == 0
+
+          obligatorios = [
+              "AE3/resultados/tabla_01_estado_seguimiento.csv",
+              "AE3/resultados/tabla_02_cuantitativas_por_estado.csv",
+              "AE3/resultados/tabla_03_binarias_por_estado.csv",
+              "AE3/resultados/tabla_04_grupo_edad_por_estado.csv",
+              "AE3/resultados/tabla_05_condiciones_registradas_por_estado.csv",
+              "AE3/resultados/control_calidad.csv",
+              "AE3/resultados/comparacion_antes_despues.csv",
+              "AE3/resultados/diccionario_datos_ae3.csv",
+              "AE3/resultados/resumen_dataframe_final.txt",
+              "AE3/documento/PABLO_GOMEZ_AE3_TRANSFORMACION_ENRIQUECIMIENTO.docx",
+          ]
+          for nombre in obligatorios:
+              p = Path(nombre)
+              assert p.exists() and p.stat().st_size > 0, nombre
+
+          txt = Path("AE3/resultados/resumen_dataframe_final.txt").read_text(encoding="utf-8")
+          for requerido in ["299", "Columnas:", "Valores nulos totales: 0", "estado_seguimiento", "grupo_edad", "condiciones_registradas"]:
+              assert requerido in txt, requerido
+
+          t1 = pd.read_csv("AE3/resultados/tabla_01_estado_seguimiento.csv")
+          assert int(t1["registros"].sum()) == 299
+          assert abs(float(t1["porcentaje"].sum()) - 100.0) < 0.02
+          print("[OK] AE3 reproducida y validada en GitHub Actions.")
+          PY
+
+      - name: Ejecutar validador integral de entrega
+        run: |
+          python validar_entrega_ae3.py
+
+      - name: Resumen
+        run: |
+          echo "[OK] Notebook ejecutado"
+          echo "[OK] 299 registros preservados"
+          echo "[OK] Dataset preparado y tablas exportadas"
+          echo "[OK] TXT final generado"
+          echo "[OK] Documento y evidencias presentes"
