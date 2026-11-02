@@ -1,0 +1,7 @@
+datasets>=4.0,<5
+pandas>=2.2,<3
+numpy>=2.0,<3
+jupyter>=1.1,<2
+ipykernel>=6.29,<7
+nbconvert>=7.16,<8
+python-docx>=1.1,<2

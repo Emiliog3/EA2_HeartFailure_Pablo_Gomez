@@ -1,0 +1,17 @@
+# Manejo de datos tabulares
+pandas>=2.2,<3
+
+# Operaciones numericas
+numpy>=2.0,<3
+
+# Acceso al dataset de Hugging Face
+datasets>=4.0,<5
+
+# Motor de ejecucion de notebooks
+ipykernel>=6.29,<7
+
+# Ejecucion automatica de Jupyter
+nbconvert>=7.16,<8
+
+# Lectura y construccion de documentos Word
+python-docx>=1.1,<2
