@@ -1,69 +1,74 @@
-# Instrucciones paso a paso – AE3 Heart Failure
+# AE3 - Instrucciones de ejecucion y verificacion
 
-Estas instrucciones están pensadas para ejecutar el proyecto en bloques pequeños y verificables.
+## Repositorio oficial
 
-## Bloque 1 – Ubicar el proyecto
+https://github.com/Emiliog3/EA2_HeartFailure_Pablo_Gomez
 
-1. Descomprima `EA3_HeartFailure_Pablo_Gomez` dentro de:
-   `G:\Mi unidad\15. ING. DE SOFTWARE Y DATOS\05. PROYECTO INTEGRADOR III\ACTIVIDADES\ACTIVIDAD 03`
-2. En Visual Studio Code seleccione **Archivo > Abrir carpeta** y abra `EA3_HeartFailure_Pablo_Gomez`.
-3. Abra **Terminal > Nuevo terminal** y confirme que la terminal se encuentra en la raíz del proyecto.
+AE3 continua la entrega EA2 dentro del mismo repositorio.
 
-## Bloque 2 – Preparar el entorno
+## Estructura
 
-1. Ejecute `powershell -ExecutionPolicy Bypass -File .\PREPARAR_ENTORNO.ps1`.
-2. Espere a que finalice la instalación y verificación de dependencias.
-3. En Jupyter seleccione el kernel **Python (EA3 HeartFailure)** o el intérprete `.venv\Scripts\python.exe`.
+- AE3/datos
+- AE3/documento
+- AE3/notebooks
+- AE3/resultados
+- AE3/src
 
-## Bloque 3 – Ejecutar AE3
+## Preparacion
 
-1. Abra `AE3/notebooks/PABLO_GOMEZ_AE3_TRANSFORMACION_ENRIQUECIMIENTO.ipynb`.
-2. Use **Run All** desde la primera celda hasta la última.
-3. Confirme al final: 299 filas, 19 columnas, 0 nulos y mensaje `[OK] AE3 ejecutada completamente`.
+Clonar el repositorio y abrir su carpeta raiz.
 
-## Bloque 4 – Validación local
+Usar Python 3.12 para reproducir el entorno de GitHub Actions.
 
-1. Guarde el notebook después de ejecutar todas las celdas.
-2. Ejecute `powershell -ExecutionPolicy Bypass -File .\VALIDAR_LOCAL.ps1`.
-3. No continúe a GitHub si alguna validación aparece como error.
-
-## Bloque 5 – Crear el repositorio nuevo de AE3
-
-> El docente escribió literalmente “mismo repositorio”. Por decisión del estudiante, esta entrega se prepara como repositorio nuevo para proteger EA2. El paquete conserva `AE2_CONTINUIDAD` y enlaza el repositorio anterior. Esta decisión debe mantenerse consciente del criterio literal de la guía.
-
-1. En GitHub cree un repositorio público vacío llamado `EA3_HeartFailure_Pablo_Gomez`.
-2. No marque README, `.gitignore` ni licencia al crearlo, porque el proyecto ya contiene esos archivos.
-3. Copie la URL HTTPS del repositorio nuevo.
-
-## Bloque 6 – Publicar con Git
-
-Ejecute, desde la raíz del proyecto, sustituyendo únicamente la URL si GitHub muestra una diferente:
+Instalar dependencias desde la raiz:
 
 ```powershell
-git init
-git branch -M main
-git add .
-git commit -m "feat: estructura inicial y continuidad de AE3"
-git remote add origin https://github.com/Emiliog3/EA3_HeartFailure_Pablo_Gomez.git
-git push -u origin main
+python -m pip install -r AE3/requirements-ci.txt
 ```
 
-Después de cualquier ajuste realice commits descriptivos, por ejemplo:
+## Ejecucion
+
+Ejecutar el notebook completo:
 
 ```powershell
-git add .
-git commit -m "feat: transforma y enriquece dataset heart failure"
-git push
+python -m nbconvert --to notebook --execute AE3/notebooks/PABLO_GOMEZ_AE3_TRANSFORMACION_ENRIQUECIMIENTO.ipynb --inplace --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.kernel_name=python3
 ```
+
+## Validacion
+
+Ejecutar:
 
 ```powershell
-git add .
-git commit -m "docs: actualiza resultados documento y README de AE3"
-git push
+python validar_entrega_ae3.py
 ```
 
-## Bloque 7 – Verificar GitHub Actions
+Comprobar:
 
-1. Abra la pestaña **Actions** del repositorio.
-2. Entre al workflow **Validacion automatica AE3**.
-3. Confirme que la ejecución final aparece en verde antes de entregar el enlace.
+- 299 registros.
+- 19 columnas finales.
+- Cero valores nulos.
+- Cinco tablas descriptivas.
+- CSV preparado.
+- TXT generado automaticamente.
+- Documento Word presente.
+
+## Ejecucion remota
+
+Consultar GitHub Actions y verificar el workflow:
+
+Validacion automatica AE3
+
+GitHub Actions instala las dependencias, ejecuta el notebook
+y valida las evidencias automaticamente.
+
+## Versionamiento
+
+EA1 y EA2 conservan su historia. AE3 se desarrolla sobre
+la misma historia Git y se incorpora en la carpeta AE3.
+
+No ejecutar git init ni crear un nuevo repositorio.
+
+## Alcance
+
+Los resultados son descriptivos y no constituyen
+diagnosticos clinicos ni inferencias causales.
