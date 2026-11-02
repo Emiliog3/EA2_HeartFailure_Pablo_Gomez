@@ -1,4 +1,4 @@
-﻿name: Validacion automatica AE2
+name: Validacion automatica AE2
 
 on:
   push:
@@ -7,15 +7,13 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   validar-ae2:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
@@ -76,10 +74,8 @@ jobs:
                       )
 
           assert len(codigo) > 0, "El notebook no contiene celdas de código."
-          assert len(ejecutadas) == len(codigo), \
-              "No todas las celdas quedaron ejecutadas."
-          assert not errores, \
-              f"El notebook presenta errores: {errores}"
+          assert len(ejecutadas) == len(codigo),               "No todas las celdas quedaron ejecutadas."
+          assert not errores,               f"El notebook presenta errores: {errores}"
 
           print("[OK] Notebook completamente ejecutado.")
           print(f"[OK] Celdas de código: {len(codigo)}")
@@ -94,8 +90,7 @@ jobs:
 
           ruta = Path("resultados/resumen_dataframe.txt")
 
-          assert ruta.exists(), \
-              "No existe resultados/resumen_dataframe.txt"
+          assert ruta.exists(),               "No existe resultados/resumen_dataframe.txt"
 
           texto = ruta.read_text(encoding="utf-8")
 
@@ -122,8 +117,7 @@ jobs:
               if elemento not in texto
           ]
 
-          assert not faltantes, \
-              f"Faltan elementos en el resumen: {faltantes}"
+          assert not faltantes,               f"Faltan elementos en el resumen: {faltantes}"
 
           print("[OK] resumen_dataframe.txt existe.")
           print("[OK] Codificación UTF-8 válida.")
@@ -145,6 +139,7 @@ jobs:
               Path("requirements.txt"),
               Path("METADATA_DATASET.md"),
               Path("CHECKLIST_RUBRICA.md"),
+              Path("PABLO GOMEZ EA2 IDEACION DISENO NECESIDAD.pdf"),
               Path("notebooks/PABLO_GOMEZ_EA2_RECONOCIMIENTO_DATASET.ipynb"),
               Path("resultados/resumen_dataframe.txt"),
           ]
@@ -155,30 +150,19 @@ jobs:
               if not archivo.exists()
           ]
 
-          assert not faltantes, \
-              f"Faltan archivos obligatorios: {faltantes}"
+          assert not faltantes,               f"Faltan archivos obligatorios: {faltantes}"
 
           for archivo in archivos:
-              assert archivo.stat().st_size > 0, \
-                  f"Archivo vacío: {archivo}"
+              assert archivo.stat().st_size > 0,                   f"Archivo vacío: {archivo}"
               print(f"[OK] {archivo}")
           PY
 
-      - name: Guardar evidencias actualizadas
+      - name: Confirmar reproducibilidad sin modificar el repositorio
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add \
-            notebooks/PABLO_GOMEZ_EA2_RECONOCIMIENTO_DATASET.ipynb \
-            resultados/resumen_dataframe.txt
-
-          if git diff --cached --quiet; then
-            echo "[OK] Las evidencias ya estaban actualizadas."
-          else
-            git commit -m "ci: ejecuta AE2 y actualiza evidencias automaticamente"
-            git push
-          fi
+          echo "[OK] El notebook se ejecutó y las evidencias fueron verificadas."
+          echo "[OK] La validación no realiza commits ni pushes automáticos."
+          echo "Cambios temporales producidos durante la ejecución:"
+          git status --short || true
 
       - name: Resumen de validacion
         run: |
@@ -187,10 +171,11 @@ jobs:
           echo "======================================================"
           echo "[OK] Dataset obtenido desde Hugging Face"
           echo "[OK] DataFrame reconocido"
-          echo "[OK] Notebook ejecutado"
+          echo "[OK] Notebook ejecutado sin errores"
           echo "[OK] 299 registros"
           echo "[OK] 13 columnas"
           echo "[OK] Resumen TXT generado"
+          echo "[OK] Documento PDF presente"
           echo "[OK] Archivos obligatorios presentes"
+          echo "[OK] Repositorio no fue modificado por el workflow"
           echo "======================================================"
-
