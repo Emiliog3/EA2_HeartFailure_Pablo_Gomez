@@ -30,19 +30,24 @@ La necesidad propuesta es **descriptiva**: caracterizar los 299 registros y comp
 - Fuente subyacente documentada: UCI Heart Failure Clinical Records — https://doi.org/10.24432/C5Z89R
 - Licencia: Hugging Face muestra la etiqueta `cc`; UCI identifica el dataset subyacente como CC BY 4.0.
 
-## Estructura
+## Estructura principal
 
 ```text
 EA2_HeartFailure_Pablo_Gomez/
+├── .github/workflows/
+│   ├── validacion_ae2.yml
+│   └── validacion_ae3.yml
+├── PABLO GOMEZ EA2 IDEACION DISENO NECESIDAD.pdf
+├── notebooks/
+│   └── PABLO_GOMEZ_EA2_RECONOCIMIENTO_DATASET.ipynb
+├── resultados/
+│   └── resumen_dataframe.txt
 ├── .gitignore
 ├── CHECKLIST_RUBRICA.md
 ├── METADATA_DATASET.md
 ├── README.md
 ├── requirements.txt
-├── notebooks/
-│   └── PABLO_GOMEZ_EA2_RECONOCIMIENTO_DATASET.ipynb
-└── resultados/
-    └── resumen_dataframe.txt
+└── AE3/  (archivos de la etapa 3, descritos más abajo)
 ```
 
 ## Pregunta de análisis
@@ -84,17 +89,17 @@ Cada instrucción importante del notebook está precedida por dos comentarios:
 
 Se conserva así un estilo pedagógico y comprensible sin modificar el comportamiento de Python.
 
-## Antes de publicar en GitHub
+## Comprobaciones de entrega y reproducción
 
 1. Ejecute el notebook completo y guarde las salidas visibles.
 2. Verifique que `resultados/resumen_dataframe.txt` se haya regenerado.
-3. Abra el documento Word y confirme el contenido final.
+3. Compruebe el PDF académico conservado en la raíz del repositorio y el documento adjuntado por separado en Canvas.
 4. No suba `.venv`, cachés ni credenciales.
 5. Use commits descriptivos que evidencien avances.
 
 ## Archivos evaluados
 
-- Documento inicial: `documento/PABLO_GOMEZ_EA2_IDEACION_DISENO_NECESIDAD.docx`
+- Documento académico (PDF): [`PABLO GOMEZ EA2 IDEACION DISENO NECESIDAD.pdf`](./PABLO%20GOMEZ%20EA2%20IDEACION%20DISENO%20NECESIDAD.pdf)
 - Notebook: `notebooks/PABLO_GOMEZ_EA2_RECONOCIMIENTO_DATASET.ipynb`
 - Resumen automático: `resultados/resumen_dataframe.txt`
 - Documentación del repositorio: `README.md`, `METADATA_DATASET.md`, `requirements.txt`
@@ -114,9 +119,9 @@ Esta verificación complementa la ejecución local y permite comprobar públicam
 
 ## Documento académico entregado en Canvas
 
-El documento académico correspondiente a AE2 se entrega directamente como archivo adjunto en Canvas, de forma separada al repositorio técnico.
+El documento académico de AE2 fue entregado como archivo adjunto en Canvas. Una copia en PDF, con el nombre `PABLO GOMEZ EA2 IDEACION DISENO NECESIDAD.pdf`, está publicada en la raíz de este repositorio como evidencia documental.
 
-El repositorio conserva las evidencias reproducibles del componente de datos: notebook ejecutado, resumen automático `.txt`, dependencias, metadata, documentación técnica e integración continua mediante GitHub Actions.
+El repositorio incluye, además, el notebook ejecutado, el resumen automático `.txt`, las dependencias, la metadata y las verificaciones reproducibles de GitHub Actions. El workflow AE2 verifica el PDF y los demás archivos obligatorios sin generar commits automáticos.
 
 
 <!-- INICIO_AE3_2026 -->

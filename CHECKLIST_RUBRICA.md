@@ -1,8 +1,8 @@
 # Checklist de la rúbrica AE2
 
 ## Puntualidad y enlace de entrega – 10 puntos
-- [ ] Entregar antes de las 23:59 del 25 de octubre de 2026.
-- [ ] Compartir un enlace válido y accesible al repositorio de GitHub.
+- [x] Entrega registrada en Canvas el 25 de octubre de 2026 a las 23:46 (hora de Bogotá), según comprobante de envío.
+- [x] Enlace público de GitHub compartido en Canvas: https://github.com/Emiliog3/EA2_HeartFailure_Pablo_Gomez.
 
 ## 1. Documento — Definición y diseño de la necesidad – 30 puntos
 - [x] Contexto y escenario identificados como hipotéticos.
@@ -43,13 +43,13 @@
 - [x] Generación automática de `resultados/resumen_dataframe.txt` en UTF-8.
 - [x] Creación automática de la carpeta si no existe.
 - [x] Verificación final mediante `assert`.
-- [ ] Ejecutar el notebook en el equipo del estudiante y guardar las salidas antes del commit final.
+- [x] Notebook con resultados guardados en GitHub: 9 de 9 celdas ejecutadas, sin salidas de error; reproducción independiente verificada por GitHub Actions AE2.
 
 ## 4. Versionamiento en GitHub – 10 puntos
 - [x] README incluido.
 - [x] Dependencias incluidas.
-- [x] Documento, notebook y .txt organizados.
+- [x] Documento PDF `PABLO GOMEZ EA2 IDEACION DISENO NECESIDAD.pdf` en la raíz; notebook y `.txt` en sus carpetas respectivas.
 - [x] `.gitignore` evita publicar el entorno virtual.
-- [ ] Crear/publicar el repositorio y realizar commits descriptivos desde el equipo del estudiante.
+- [x] Repositorio público creado y versionado con commits descriptivos; workflow AE2 ejecutado y aprobado.
 
-**Observación:** los únicos puntos que dependen todavía de una acción externa son la ejecución final en el entorno local, los commits/publicación en GitHub y la entrega puntual en Canvas.
+**Estado de las evidencias:** entrega registrada en Canvas, repositorio público, documento PDF disponible, notebook ejecutado y GitHub Actions AE2 en estado `success` (ejecuciones #8 y #9, commit `8269496`). Estas comprobaciones acreditan evidencias técnicas; la valoración y aceptación del formato documental corresponden al docente.
